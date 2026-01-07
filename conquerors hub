@@ -1,0 +1,171 @@
+local Axion = loadstring(game:HttpGet("https://raw.githubusercontent.com/adamowaissi22-boop/Axom-Scripts-/refs/heads/main/Axion%20Ui%20L"OrionTest"})
+
+local Window = Axion:CreateWindow({
+    Name = "Conqueror's Hub V1",
+    Subtitle = "Made By Anonymous",
+    Version = "v1.0",
+    Theme = "Default",
+    ConfigurationSaving = {
+        Enabled = true,
+        FolderName = "AxionConfig",
+        FileName = "DemoConfig"
+    }
+})
+
+local MainTab = Window:CreateTab({
+    Name = "Main",
+    Icon = "⭐"
+})
+
+local Button = Tab:CreateButton({
+   Name = "FE Sandevistan",
+   Callback = function(v)
+       v = loadstring(game:HttpGet("https://pastebin.com/raw/tPh4jS4p"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "FE Animation Energize",
+   Callback = function(v)
+        v = loadstring(game:HttpGet("https://rawscripts.net/raw/Energize-script-24783"))()
+   end,
+})
+
+
+local Button = Tab:CreateButton({
+   Name = "Ink Monster FE",
+   Callback = function(v)
+        v = loadstring(game:HttpGet("https://raw.githubusercontent.com/0Ben1/fe/main/obf_rTvXTs8F16D8D2oiLxZ62E1E9jT1we312yUyJr2h72Vwqr32l37rirU1S89hqRV7.lua.txt"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Death Note Fling FE",
+   Callback = function(v)
+        v = loadstring(game:HttpGet("https://pastebin.com/raw/5Baep7Ub"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Invisible Script FE",
+   Callback = function(v)
+        v = loadstring(game:HttpGet('https://pastebin.com/raw/3Rnd9rHf'))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Fly Gui",
+   Callback = function(v)
+        v = loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-simple-fly-gui-77244"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "One Piece Powers",
+   Callback = function(v)
+        v = loadstring(game:HttpGet("https://pastebin.com/raw/5dWPdjQV"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Emote Hub FE",
+   Callback = function(v)
+        v =loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Emote-Animation-Script-UGC-78410"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Backflip FE Script",
+   Callback = function(v)
+        v = loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-backflip-script-67332"))()
+   end,
+})
+
+
+local VisualTab = Window:CreateTab({
+    Name = "Fun",
+    Icon = "🎉"
+})
+
+ local Toggle = Tab:CreateToggle({
+    Name = "Infinite Jump",
+    CurrentValue = false,
+    Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(InfiniteJumpEnabled)
+        local InfiniteJumpEnabled = true
+        game:GetService("UserInputService").JumpRequest:connect(function()
+            if InfiniteJumpEnabled then
+                game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+            end
+        end)
+    end,
+ })
+
+ local Slider = Tab:CreateSlider({
+    Name = "Walkspeed",
+    Range = {16, 250},
+    Increment = 10,
+    Suffix = "Walkspeed",
+    CurrentValue = 10,
+    Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(v)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+    end,
+ })
+
+ local Slider = Tab:CreateSlider({
+    Name = "JumpPower",
+    Range = {50, 500},
+    Increment = 10,
+    Suffix = "JumpPower",
+    CurrentValue = 10,
+    Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(v)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+    end,
+ })
+
+
+ local Slider = Tab:CreateSlider({
+    Name = "FOV",
+    Range = {10, 120},
+    Increment = 10,
+    Suffix = "FOV",
+    CurrentValue = 10,
+    Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(v)
+        workspace.CurrentCamera.FieldOfView = v
+    end,
+ })
+
+ local Slider = Tab:CreateSlider({
+    Name = "Gravity",
+    Range = {0, 500},
+    Increment = 10,
+    Suffix = "Gravity",
+    CurrentValue = 10,
+    Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(v)
+        game.Workspace.Gravity = v
+    end,
+ })
+
+ local VisualTab = Window:CreateTab({
+    Name = "Other Hubs",
+    Icon = "🌐"
+})
+
+local VisualTab = Window:CreateTab({
+    Name = "Settings",
+    Icon = "⚙️"
+})
+
+local themeDropdown = SettingsSection:CreateDropdown({
+    Name = "Theme",
+    Options = {"Default", "Dark", "Light"},
+    CurrentOption = "Default",
+    Flag = "Theme",
+    Callback = function(value)
+        Window:SetTheme(value)
+    end
+})
