@@ -110,6 +110,15 @@ local Button = Tab:CreateButton({
    end,
 })
 
+local Button = Tab:CreateButton({
+   Name = "Spiderman FE",
+   Callback = function(v)
+        v = loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Omni-directional-Mobility-ODM-gear-movement-thingy-77053"))()
+   end,
+})
+
+loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Omni-directional-Mobility-ODM-gear-movement-thingy-77053"))()
+
 local Tab = Window:CreateTab("Fun", 77728023109953) -- Title, Image
 
 
