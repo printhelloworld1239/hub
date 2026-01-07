@@ -1,0 +1,232 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+
+local Window = Rayfield:CreateWindow({
+   Name = "Tactical Hub",
+   Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+   LoadingTitle = "OP Tactical Hub",
+   LoadingSubtitle = "by Anonymous",
+   ShowText = "Rayfield", -- for mobile users to unhide rayfield, change if you'd like
+   Theme = "DarkBlue", -- Check https://docs.sirius.menu/rayfield/configuration/themes
+
+   ToggleUIKeybind = "K", -- The keybind to toggle the UI visibility (string like "K" or Enum.KeyCode)
+
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
+
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "Big Hub"
+   },
+
+   Discord = {
+      Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+
+   KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "No method of obtaining the key is provided", -- Use this to tell the user how to get a key
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"Hello"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+
+
+local Tab = Window:CreateTab("Main", 71482378387921) -- Title, Image
+
+
+local Section = Tab:CreateSection("Universal Scripts")
+
+
+local Button = Tab:CreateButton({
+   Name = "FE Sandevistan",
+   Callback = function(v)
+       v = loadstring(game:HttpGet("https://pastebin.com/raw/tPh4jS4p"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "FE Animation Energize",
+   Callback = function(v)
+        v = loadstring(game:HttpGet("https://rawscripts.net/raw/Energize-script-24783"))()
+   end,
+})
+
+
+local Button = Tab:CreateButton({
+   Name = "Ink Monster FE",
+   Callback = function(v)
+        v = loadstring(game:HttpGet("https://raw.githubusercontent.com/0Ben1/fe/main/obf_rTvXTs8F16D8D2oiLxZ62E1E9jT1we312yUyJr2h72Vwqr32l37rirU1S89hqRV7.lua.txt"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Death Note Fling FE",
+   Callback = function(v)
+        v = loadstring(game:HttpGet("https://pastebin.com/raw/5Baep7Ub"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Invisible Script FE",
+   Callback = function(v)
+        v = loadstring(game:HttpGet('https://pastebin.com/raw/3Rnd9rHf'))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Fly Gui",
+   Callback = function(v)
+        v = loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-simple-fly-gui-77244"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "One Piece Powers",
+   Callback = function(v)
+        v = loadstring(game:HttpGet("https://pastebin.com/raw/5dWPdjQV"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Emote Hub FE",
+   Callback = function(v)
+        v =loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Emote-Animation-Script-UGC-78410"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Backflip FE Script",
+   Callback = function(v)
+        v = loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-backflip-script-67332"))()
+   end,
+})
+
+local Tab = Window:CreateTab("Fun", 77728023109953) -- Title, Image
+
+
+local Section = Tab:CreateSection("Fun Scripts")
+
+ local Toggle = Tab:CreateToggle({
+    Name = "Infinite Jump",
+    CurrentValue = false,
+    Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(InfiniteJumpEnabled)
+        local InfiniteJumpEnabled = true
+        game:GetService("UserInputService").JumpRequest:connect(function()
+            if InfiniteJumpEnabled then
+                game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+            end
+        end)
+    end,
+ })
+
+ local Slider = Tab:CreateSlider({
+    Name = "Walkspeed",
+    Range = {16, 250},
+    Increment = 10,
+    Suffix = "Walkspeed",
+    CurrentValue = 10,
+    Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(v)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+    end,
+ })
+
+ local Slider = Tab:CreateSlider({
+    Name = "JumpPower",
+    Range = {50, 500},
+    Increment = 10,
+    Suffix = "JumpPower",
+    CurrentValue = 10,
+    Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(v)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+    end,
+ })
+
+
+ local Slider = Tab:CreateSlider({
+    Name = "FOV",
+    Range = {10, 120},
+    Increment = 10,
+    Suffix = "FOV",
+    CurrentValue = 10,
+    Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(v)
+        workspace.CurrentCamera.FieldOfView = v
+    end,
+ })
+
+ local Slider = Tab:CreateSlider({
+    Name = "Gravity",
+    Range = {0, 500},
+    Increment = 10,
+    Suffix = "Gravity",
+    CurrentValue = 10,
+    Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(v)
+        game.Workspace.Gravity = v
+    end,
+ })
+
+
+
+local Tab = Window:CreateTab("Others", 103603166985768) -- Title, Image
+
+
+local Section = Tab:CreateSection("Other Scripts")
+
+local Button = Tab:CreateButton({
+   Name = "OP Admin Script",
+   Callback = function(v)
+        v = loadstring(game:HttpGet('https://raw.githubusercontent.com/addihallstar/opadminsupreme/refs/heads/main/opadmin_new.lua'))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Nameless Admin",
+   Callback = function(v)
+        v = loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Nameless-admin-reworked-75477"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Infinite Yield",
+   Callback = function(v)
+        v = loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Infinite-Yield-modded-80479"))()
+   end,
+})
+
+
+local Button = Tab:CreateButton({
+   Name = "Remote Spy",
+   Callback = function(v)
+        v = loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Simple-RemoteSpy-WORKS-IN-ALL-EXECUTORS-79223"))()
+   end,
+})
+
+local Tab = Window:CreateTab("Hubs", 101557782878147) -- Title, Image
+
+local Section = Tab:CreateSection("Script Hubs")
+
+local Button = Tab:CreateButton({
+   Name = "System Broken Hub",
+   Callback = function(v)
+        v = loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-System-Broken-New-Update-Script-Universal-71662"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Echolite Hub",
+   Callback = function(v)
+        v = loadstring(game:HttpGet("https://raw.githubusercontent.com/YepimSirPwnsAlot/dfdsfsfewfe/refs/heads/main/xcscdscsdcs"))()
+   end,
+})
