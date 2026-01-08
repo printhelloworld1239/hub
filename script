@@ -1,7 +1,6 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 
-Shadow = Color3.fromRGB(0, 0, 28),
 local Window = Rayfield:CreateWindow({
    Name = "Tactical Hub",
    Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
