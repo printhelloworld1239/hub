@@ -138,6 +138,7 @@ local Section = Tab:CreateSection("Fun Scripts")
     end,
  })
 
+
  local Slider = Tab:CreateSlider({
     Name = "Walkspeed",
     Range = {16, 250},
@@ -220,6 +221,130 @@ local Button = Tab:CreateButton({
    Name = "Remote Spy",
    Callback = function(v)
         v = loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Simple-RemoteSpy-WORKS-IN-ALL-EXECUTORS-79223"))()
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Remote Spy",
+   Callback = function(v)
+        v = --[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+
+local espEnabled = false
+local badgeParts = {}
+
+-- Clean old GUI
+if PlayerGui:FindFirstChild("BadgeESPGUI") then
+	PlayerGui.BadgeESPGUI:Destroy()
+end
+
+-- Create toggle GUI
+local gui = Instance.new("ScreenGui", PlayerGui)
+gui.Name = "BadgeESPGUI"
+gui.ResetOnSpawn = false
+
+local toggle = Instance.new("TextButton", gui)
+toggle.Size = UDim2.new(0, 120, 0, 40)
+toggle.Position = UDim2.new(0, 10, 0, 10)
+toggle.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+toggle.TextColor3 = Color3.new(1, 1, 1)
+toggle.TextScaled = true
+toggle.Font = Enum.Font.SourceSansBold
+toggle.Text = "⚪ ESP: OFF"
+
+-- Function: Check if part is real badge giver
+local function isBadgePart(part)
+	if not part:IsA("BasePart") then return false end
+	for _, obj in ipairs(part:GetDescendants()) do
+		if obj:IsA("Script") then
+			local n = obj.Name:lower()
+			if n:find("award") or n:find("badge") then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+-- Function: Create ESP on a badge part
+local function createESP(part)
+	if part:FindFirstChild("BadgeESP") then return end
+
+	local gui = Instance.new("BillboardGui")
+	gui.Name = "BadgeESP"
+	gui.Adornee = part
+	gui.Size = UDim2.new(0, 100, 0, 50)
+	gui.StudsOffset = Vector3.new(0, part.Size.Y + 1.5, 0)
+	gui.AlwaysOnTop = true
+	gui.Parent = part
+
+	local label = Instance.new("TextLabel", gui)
+	label.Size = UDim2.new(1, 0, 0.5, 0)
+	label.Position = UDim2.new(0, 0, 0, 0)
+	label.BackgroundTransparency = 1
+	label.Text = "🎖️ Badge"
+	label.TextColor3 = Color3.fromRGB(255, 255, 0)
+	label.TextScaled = true
+	label.Font = Enum.Font.SourceSansBold
+
+	local distLabel = Instance.new("TextLabel", gui)
+	distLabel.Size = UDim2.new(1, 0, 0.5, 0)
+	distLabel.Position = UDim2.new(0, 0, 0.5, 0)
+	distLabel.BackgroundTransparency = 1
+	distLabel.Text = ""
+	distLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	distLabel.TextScaled = true
+	distLabel.Font = Enum.Font.SourceSans
+
+	-- Update distance
+	RunService.RenderStepped:Connect(function()
+		if not gui or not gui.Parent or not part:IsDescendantOf(workspace) then return end
+		local hrp = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+		if hrp then
+			local studs = (part.Position - hrp.Position).Magnitude
+			distLabel.Text = math.floor(studs) .. " studs"
+		end
+	end)
+end
+
+-- Function: Enable ESP (scan + create)
+local function enableESP()
+	-- Clear badgeParts
+	table.clear(badgeParts)
+
+	for _, part in ipairs(workspace:GetDescendants()) do
+		if part:IsA("BasePart") and isBadgePart(part) then
+			createESP(part)
+			table.insert(badgeParts, part)
+		end
+	end
+end
+
+-- Function: Disable ESP (remove GUIs)
+local function disableESP()
+	for _, part in ipairs(badgeParts) do
+		if part and part:FindFirstChild("BadgeESP") then
+			part.BadgeESP:Destroy()
+		end
+	end
+end
+
+-- Toggle handler
+toggle.MouseButton1Click:Connect(function()
+	espEnabled = not espEnabled
+	toggle.Text = espEnabled and "🔵 ESP: ON" or "⚪ ESP: OFF"
+
+	if espEnabled then
+		enableESP()
+	else
+		disableESP()
+	end
+end)
    end,
 })
 
