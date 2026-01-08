@@ -223,16 +223,6 @@ local Button = Tab:CreateButton({
    end,
 })
 
-local Button = Tab:CreateButton({
-   Name = "Remote Spy",
-   Callback = function(v)
-        v = loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Simple-RemoteSpy-WORKS-IN-ALL-EXECUTORS-79223"))()
-
-local Button = Tab:CreateButton({
-   Name = "Badge Esp",
-   Callback = function(v)
-        v = https://pastebin.com/raw/0YdQXp3e
-
 local Tab = Window:CreateTab("Hubs", 101557782878147) -- Title, Image
 
 local Section = Tab:CreateSection("Script Hubs")
